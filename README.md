@@ -48,7 +48,6 @@ This is the first step in identifying feasible locations for future supermarkets
 - **Jupyter Notebooks**
 - **Git LFS**: for storing large `.geojson` files
 - **HTML**: for standalone visual preview of map overlays
-- Optional: QGIS or ArcGIS for deeper cartographic editing
 
 ---
 
@@ -60,6 +59,6 @@ This is the first step in identifying feasible locations for future supermarkets
 
 ---
 
-## 📬 Contact
-If you'd like to collaborate or explore this pipeline, reach out via [rohitr@usc.edu](mailto:rohitr@usc.edu) or [abigail.horn@usc.edu](mailto:abigail.horn@usc.edu).
+## Contact
+If you'd like to collaborate or explore this pipeline, reach out via [rohitr@usc.edu](mailto:rohitr@usc.edu), [abigail.horn@usc.edu](mailto:abigail.horn@usc.edu), [adparikh@usc.edu](mailto:adparikh@usc.edu)
 
