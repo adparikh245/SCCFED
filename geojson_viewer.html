@@ -111,6 +111,7 @@
             <div class="file-item" data-file="la_county_cbgs.geojson">CBG Base Geography</div>
             <div class="file-item" data-file="scag_commercial_coverage_by_cbg.geojson">SCAG Commercial Coverage</div>
             <div class="file-item" data-file="lac_commercial_coverage_by_cbg.geojson">LAC Commercial Coverage</div>
+            <div class="file-item" data-file="lac_food_coverage_by_cbg.geojson">LAC Food Coverage</div>
             
             <div class="info-panel">
                 <h3>File Info</h3>
@@ -178,6 +179,12 @@
                 .then(geojson => {
                     // Hide loading state
                     document.getElementById('loading').style.display = 'none';
+                    
+                    // Check if GeoJSON is valid and has features
+                    if (!geojson || !geojson.features || geojson.features.length === 0) {
+                        throw new Error('GeoJSON file is empty or has no features');
+                    }
+                    
                     displayGeoJSON(geojson, fileName);
                 })
                 .catch(error => {
@@ -219,9 +226,17 @@
                 }
             }).addTo(map);
             
-            // Fit map to layer bounds
-            if (currentLayer.getBounds) {
-                map.fitBounds(currentLayer.getBounds());
+            // Fit map to layer bounds with error handling
+            try {
+                if (currentLayer.getBounds && !currentLayer.getBounds().isEmpty()) {
+                    map.fitBounds(currentLayer.getBounds());
+                } else {
+                    // If no bounds, keep current view centered on LA County
+                    map.setView([34.0522, -118.2437], 9);
+                }
+            } catch (e) {
+                console.warn('Could not fit bounds:', e);
+                map.setView([34.0522, -118.2437], 9);
             }
             
             // Update file info
@@ -229,6 +244,13 @@
             
             // Update legend
             updateLegend(colorScheme);
+            
+            // Debug info
+            console.log(`Loaded ${fileName}:`, {
+                features: geojson.features.length,
+                colorScheme: colorScheme,
+                sampleProperties: geojson.features[0]?.properties
+            });
         }
         
         function getColorScheme(fileName) {
@@ -236,20 +258,20 @@
                 return {
                     type: 'coverage',
                     property: 'coverage_percentage',
-                    colors: ['#f7fbff', '#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#08519c'],
+                    colors: ['#ffffff', '#fee5d9', '#fcae91', '#fb6a4a', '#de2d26', '#a50f15'],
                     description: 'SCAG Commercial Coverage %'
                 };
-            } else if (fileName.includes('lac_commercial_coverage_by_cbg')) {
+            } else if (fileName.includes('lac_commercial_coverage_by_cbg') || fileName.includes('lac_food_coverage_by_cbg')) {
                 return {
                     type: 'coverage',
                     property: 'coverage_percentage',
-                    colors: ['#fff5eb', '#fee6ce', '#fdd0a2', '#fdae6b', '#fd8d3c', '#e6550d', '#a63603', '#7f2704'],
-                    description: 'LAC Commercial Coverage %'
+                    colors: ['#ffffff', '#fde0dd', '#fcc5c0', '#fa9fb5', '#f768a1', '#c51b8a'],
+                    description: 'LAC Coverage %'
                 };
             } else {
                 return {
                     type: 'cbg',
-                    property: 'area_km2',
+                    property: 'ALAND',
                     colors: ['#f3e5f5', '#ba68c8', '#6a1b9a'],
                     description: 'CBG Areas'
                 };
@@ -269,28 +291,28 @@
             
             return {
                 fillColor: fillColor,
-                weight: 1,
-                opacity: 1,
-                color: 'white',
-                fillOpacity: 0.7
+                weight: 0.6,
+                opacity: 0.8,
+                color: '#000000',
+                fillOpacity: 0.8
             };
         }
         
         function getCoverageColor(pct, colors) {
             if (pct === 0) return colors[0];
-            if (pct <= 5) return colors[1];
-            if (pct <= 10) return colors[2];
-            if (pct <= 20) return colors[3];
-            if (pct <= 30) return colors[4];
-            if (pct <= 50) return colors[5];
-            if (pct <= 75) return colors[6];
-            return colors[7];
+            if (pct <= 2) return colors[1];
+            if (pct <= 5) return colors[2];
+            if (pct <= 10) return colors[3];
+            if (pct <= 20) return colors[4];
+            return colors[5];
         }
         
         function getAreaColor(area, colors) {
-            if (area < 0.5) return colors[2];
-            if (area < 2) return colors[1];
-            return colors[0];
+            // Convert area from square meters to square kilometers for better visualization
+            const areaKm2 = area / 1000000;
+            if (areaKm2 < 0.5) return colors[2];  // Small areas - dark purple
+            if (areaKm2 < 2) return colors[1];    // Medium areas - medium purple
+            return colors[0];                     // Large areas - light purple
         }
         
         function updateFileInfo(geojson, fileName) {
@@ -317,7 +339,7 @@
             
             if (colorScheme.type === 'coverage') {
                 let legend = `<h4>${colorScheme.description}</h4>`;
-                const ranges = ['0%', '1-5%', '6-10%', '11-20%', '21-30%', '31-50%', '51-75%', '76-100%'];
+                const ranges = ['0%', '1-2%', '3-5%', '6-10%', '11-20%', '>20%'];
                 ranges.forEach((range, i) => {
                     legend += `<div class="legend-item">
                         <div class="legend-color" style="background-color: ${colorScheme.colors[i]}"></div>
@@ -327,7 +349,7 @@
                 legendDiv.innerHTML = legend;
             } else if (colorScheme.type === 'cbg') {
                 let legend = `<h4>${colorScheme.description}</h4>`;
-                const ranges = ['Large (>2 km²)', 'Medium (0.5-2 km²)', 'Small (<0.5 km²)'];
+                const ranges = ['Small (<0.5 km²)', 'Medium (0.5-2 km²)', 'Large (>2 km²)'];
                 ranges.forEach((range, i) => {
                     legend += `<div class="legend-item">
                         <div class="legend-color" style="background-color: ${colorScheme.colors[i]}"></div>

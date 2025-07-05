@@ -51,14 +51,6 @@ This is the first step in identifying feasible locations for future supermarkets
 
 ---
 
-## Next Steps
-
-- Integrate these coverage metrics with zoning constraints in the LSCP/MCLP models.
-- Overlay food coverage with supermarket accessibility gaps.
-- Align with DRP land-use restrictions to evaluate realistic intervention sites.
-
----
-
 ## Contact
 If you'd like to collaborate or explore this pipeline, reach out via [rohitr@usc.edu](mailto:rohitr@usc.edu), [abigail.horn@usc.edu](mailto:abigail.horn@usc.edu), [adparikh@usc.edu](mailto:adparikh@usc.edu)
 
