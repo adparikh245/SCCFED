@@ -1,10 +1,7 @@
-# SCCFED: Commercial Coverage Analysis for Food Equity Planning
+# SCCFED: Smart and Connected Communities Food Environment Dynamics
 
 This repository contains spatial analysis and supporting data files for evaluating **commercially zoned parcels** in Los Angeles County (LAC) and Southern California Association of Governments (SCAG) data, with a focus on supermarket site feasibility.
-
-It supports the study:
-
-> **"Equitable Facility Location for Supermarket Interventions with Large-Scale Mobility Data"**  
+ 
 ---
 
 ## Project Goal
@@ -35,9 +32,9 @@ This is the first step in identifying feasible locations for future supermarkets
 
 ## Methods
 
-- Filtered LAC and SCAG data for **commercial zones** (use codes starting with 1 or 2).
+- Filtered LAC and SCAG data for **commercial zones**.
 - Used CBG shapefiles to compute the **percentage of area** within each CBG covered by those parcels.
-- For LAC: also isolated **food-related outlets** (use codes like 14–16, 21, 131, etc.).
+- For LAC: also isolated **food-related outlets**.
 - Merged and compared SCAG and LAC outputs for spatial overlap and attribute similarity.
 
 ---
@@ -52,5 +49,5 @@ This is the first step in identifying feasible locations for future supermarkets
 ---
 
 ## Contact
-If you'd like to collaborate or explore this pipeline, reach out via [rohitr@usc.edu](mailto:rohitr@usc.edu), [abigail.horn@usc.edu](mailto:abigail.horn@usc.edu), [adparikh@usc.edu](mailto:adparikh@usc.edu)
+If you'd like to collaborate or explore this pipeline, reach out via [rohitr@usc.edu](mailto:rohitr@usc.edu) | [abigail.horn@usc.edu](mailto:abigail.horn@usc.edu) | [adparikh@usc.edu](mailto:adparikh@usc.edu)
 

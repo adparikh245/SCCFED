@@ -5,6 +5,15 @@
 		},
 		{
 			"path": "../../../Desktop/SCCFED/CBG_files"
+		},
+		{
+			"path": "../../../Desktop/SCCFED/LACounty_Parcels"
+		},
+		{
+			"path": "../../../Desktop/SCCFED/tl_2024_06_bg"
+		},
+		{
+			"path": "../../../Desktop/SCCFED/2019_Land_Use"
 		}
 	],
 	"settings": {
