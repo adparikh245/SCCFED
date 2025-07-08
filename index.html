@@ -352,7 +352,7 @@
                 const ranges = ['Small (<0.5 km²)', 'Medium (0.5-2 km²)', 'Large (>2 km²)'];
                 ranges.forEach((range, i) => {
                     legend += `<div class="legend-item">
-                        <div class="legend-color" style="background-color: ${colorScheme.colors[i]}"></div>
+                        <div class="legend-color" style="background-color: ${colorScheme.colors[2 - i]}"></div>
                         <span>${range}</span>
                     </div>`;
                 });
