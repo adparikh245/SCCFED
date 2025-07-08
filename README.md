@@ -44,10 +44,9 @@ This is the first step in identifying feasible locations for future supermarkets
 - **Python**: `geopandas`, `shapely`, `matplotlib`, `osmnx`
 - **Jupyter Notebooks**
 - **Git LFS**: for storing large `.geojson` files
-- **HTML**: for standalone visual preview of map overlays
+- **HTML**: for visual preview of map overlays
 
 ---
 
 ## Contact
-If you'd like to collaborate or explore this pipeline, reach out via [rohitr@usc.edu](mailto:rohitr@usc.edu) | [abigail.horn@usc.edu](mailto:abigail.horn@usc.edu) | [adparikh@usc.edu](mailto:adparikh@usc.edu)
-
+If you'd like to collaborate or explore this pipeline, reach out via [rohitr@usc.edu](mailto:rohitr@usc.edu) | [abigail.horn@usc.edu](mailto:abigail.horn@usc.edu)
