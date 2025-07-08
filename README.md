@@ -9,9 +9,9 @@ This repository contains spatial analysis and supporting data files for evaluati
 To determine the **proportion of each Census Block Group (CBG)** that is covered by commercially zoned parcels, and to conduct a comparative analysis across zoning datasets from:
 
 -  **SCAG** (Southern California Association of Governments)
--  **LAC Assessor’s Office** (Los Angeles County)
+-  **LAC** (Los Angeles County)
 
-This is the first step in identifying feasible locations for future supermarkets, in line with optimization models from the main paper.
+This identifies feasible locations for future supermarkets, in line with optimization models from the main paper.
 
 ---
 
