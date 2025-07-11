@@ -19,12 +19,12 @@ This identifies feasible locations for future supermarkets, in line with optimiz
 
 | File | Description |
 |------|-------------|
-| `scag_commercial_parcels.geojson` | GeoJSON of SCAG commercial parcels |
-| `lac_commercial_parcels_sample.geojson` | Sample of LAC commercial parcels |
-| `scag_commercial_coverage_by_cbg.geojson` | Proportion of each CBG covered by SCAG parcels |
-| `lac_food_coverage_by_cbg.geojson` | CBG-level food outlet coverage (LAC data) |
-| `lac_commercial_coverage_by_cbg.geojson` | CBG-level commercial coverage (LAC data) |
-| `la_county_cbgs.geojson` | CBG boundaries used for analysis |
+| `scag_commercial_parcels.json` | GeoJSON of SCAG commercial parcels |
+| `lac_commercial_parcels_sample.json` | Sample of LAC commercial parcels |
+| `scag_commercial_coverage_by_cbg.json` | Proportion of each CBG covered by SCAG parcels |
+| `lac_food_coverage_by_cbg.json` | CBG-level food outlet coverage (LAC data) |
+| `lac_commercial_coverage_by_cbg.json` | CBG-level commercial coverage (LAC data) |
+| `la_county_cbgs.json` | CBG boundaries used for analysis |
 | `analysis.ipynb` | Notebook containing all calculations and visuals |
 | `geojson_viewer.html` | Interactive map to view parcel/CBG overlays |
 
@@ -34,14 +34,14 @@ This identifies feasible locations for future supermarkets, in line with optimiz
 
 - Filtered LAC and SCAG data for **commercial zones**.
 - Used CBG shapefiles to compute the **percentage of area** within each CBG covered by those parcels.
-- For LAC: also isolated **food-related outlets**.
+- For LAC: also isolated food-related outlets.
 - Merged and compared SCAG and LAC outputs for spatial overlap and attribute similarity.
 
 ---
 
 ## Tools Used
 
-- **Python**: `geopandas`, `shapely`, `matplotlib`, `osmnx`
+- **Python**: `geopandas`, `shapely`, `numpy`, `pandas`
 - **Jupyter Notebooks**
 - **Git LFS**: for storing large `.geojson` files
 - **HTML**: for visual preview of map overlays
@@ -49,4 +49,4 @@ This identifies feasible locations for future supermarkets, in line with optimiz
 ---
 
 ## Contact
-If you'd like to collaborate or explore this pipeline, reach out via [rohitr@usc.edu](mailto:rohitr@usc.edu) | [abigail.horn@usc.edu](mailto:abigail.horn@usc.edu)
+If you'd like to collaborate or explore this pipeline, reach out via [abigail.horn@usc.edu](mailto:abigail.horn@usc.edu) | [rohitr@usc.edu](mailto:rohitr@usc.edu) 
