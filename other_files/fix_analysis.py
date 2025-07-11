@@ -4,10 +4,10 @@ import os
 
 # List of GeoJSON files to reproject
 geojson_files = [
-    'la_county_cbgs.geojson',
-    'scag_commercial_coverage_by_cbg.geojson',
-    'lac_commercial_coverage_by_cbg.geojson',
-    'lac_food_coverage_by_cbg.geojson',
+    'la_county_cbgs.json',
+    'scag_commercial_coverage_by_cbg.json',
+    'lac_commercial_coverage_by_cbg.json',
+    'lac_food_coverage_by_cbg.json',
 ]
 
 for file in geojson_files:

@@ -2,9 +2,9 @@ import geopandas as gpd
 import pandas as pd
 
 # Load coverage GeoJSONs
-scag_gdf = gpd.read_file('scag_commercial_coverage_by_cbg.geojson')
-lac_com_gdf = gpd.read_file('lac_commercial_coverage_by_cbg.geojson')
-lac_food_gdf = gpd.read_file('lac_food_coverage_by_cbg.geojson')
+scag_gdf = gpd.read_file('scag_commercial_coverage_by_cbg.json')
+lac_com_gdf = gpd.read_file('lac_commercial_coverage_by_cbg.json')
+lac_food_gdf = gpd.read_file('lac_food_coverage_by_cbg.json')
 
 # Extract only the key columns
 scag_df     = pd.DataFrame(scag_gdf[['GEOID','covered_area']]).rename(columns={'covered_area':'scag_area'})
@@ -20,7 +20,7 @@ combined = (
 )
 
 # Load CBG areas from the current CBG file
-cbg_gdf = gpd.read_file('la_county_cbgs.geojson').to_crs('EPSG:3310')
+cbg_gdf = gpd.read_file('la_county_cbgs.json').to_crs('EPSG:3310')
 cbg_gdf['cbg_area'] = cbg_gdf.geometry.area
 cbg_areas = cbg_gdf[['GEOID', 'cbg_area']]
 
