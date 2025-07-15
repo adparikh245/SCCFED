@@ -35,6 +35,13 @@ combined['total_area_covered'] = (
 )
 combined['coverage_pct'] = (combined['total_area_covered'] / combined['cbg_area'] * 100).round(2)
 
-# Export to CSV
+# Add area in acres columns
+combined['scag_area_acres'] = combined['scag_area'] / 4046.8564224
+combined['lac_com_area_acres'] = combined['lac_com_area'] / 4046.8564224
+combined['lac_food_area_acres'] = combined['lac_food_area'] / 4046.8564224
+combined['cbg_area_acres'] = combined['cbg_area'] / 4046.8564224
+combined['total_area_covered_acres'] = combined['total_area_covered'] / 4046.8564224
+
+# Export to CSV (including new acre columns)
 combined.to_csv('cbg_parcel_coverage_summary.csv', index=False)
 print('Written ➔ cbg_parcel_coverage_summary.csv') 
