@@ -26,7 +26,8 @@ This identifies feasible locations for future supermarkets, in line with optimiz
 | `lac_commercial_coverage_by_cbg.json` | CBG-level commercial coverage (LAC data) |
 | `la_county_cbgs.json` | CBG boundaries used for analysis |
 | `analysis.ipynb` | Notebook containing all calculations and visuals |
-| `geojson_viewer.html` | Interactive map to view parcel/CBG overlays |
+| `index.html` | Interactive map to view parcel/CBG overlays |
+| `cbg_parcel_coverage_summary.xlsx` | formatted data analysis for coverage % |
 
 ---
 
@@ -36,7 +37,7 @@ This identifies feasible locations for future supermarkets, in line with optimiz
 - Used CBG shapefiles to compute the **percentage of area** within each CBG covered by those parcels.
 - For LAC: also isolated food-related outlets.
 - Merged and compared SCAG and LAC outputs for spatial overlap and attribute similarity.
-
+- FULL REPORT for **more info on methodology + detailed review of repo:** [Report Link](https://docs.google.com/document/d/1hlX9L6iqkRNPcUR1n-hzSdv-3MY1HdgH5r_m41ML1aE/edit)
 ---
 
 ## Tools Used
@@ -45,6 +46,12 @@ This identifies feasible locations for future supermarkets, in line with optimiz
 - **Jupyter Notebooks**
 - **Git LFS**: for storing large `.geojson` files
 - **HTML**: for visual preview of map overlays
+
+---
+## Citations:
+- LAC (2019): https://data.lacounty.gov/documents/lacounty::parcels/about
+- SCAG (2019): https://hub.scag.ca.gov/datasets/3e9c888c6aae45ab8e140abeec42cd1e_0/about
+- CBG (2024): https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2024&layergroup=Block+Groups
 
 ---
 

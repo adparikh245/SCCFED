@@ -1,3 +1,5 @@
+# !!! Look at excel file cbg_parcel_coverage_summary.xlsx for formatted results 
+
 import geopandas as gpd
 import pandas as pd
 
@@ -19,6 +21,7 @@ combined = (
     .fillna(0)
 )
 
+
 # Load CBG areas from the current CBG file
 cbg_gdf = gpd.read_file('la_county_cbgs.json').to_crs('EPSG:3310')
 cbg_gdf['cbg_area'] = cbg_gdf.geometry.area
@@ -27,21 +30,17 @@ cbg_areas = cbg_gdf[['GEOID', 'cbg_area']]
 # Merge areas
 combined = combined.merge(cbg_areas, on='GEOID', how='left')
 
-# Add total covered area and coverage percentage
-combined['total_area_covered'] = (
-    combined['scag_area']
-  + combined['lac_com_area']
-  + combined['lac_food_area']
-)
-combined['coverage_pct'] = (combined['total_area_covered'] / combined['cbg_area'] * 100).round(2)
+# Add three separate coverage percentage columns
+combined['scag_coverage_pct'] = (combined['scag_area'] / combined['cbg_area'] * 100).round(2)
+combined['lac_com_coverage_pct'] = (combined['lac_com_area'] / combined['cbg_area'] * 100).round(2)
+combined['lac_food_coverage_pct'] = (combined['lac_food_area'] / combined['cbg_area'] * 100).round(2)
 
 # Add area in acres columns
 combined['scag_area_acres'] = combined['scag_area'] / 4046.8564224
 combined['lac_com_area_acres'] = combined['lac_com_area'] / 4046.8564224
 combined['lac_food_area_acres'] = combined['lac_food_area'] / 4046.8564224
 combined['cbg_area_acres'] = combined['cbg_area'] / 4046.8564224
-combined['total_area_covered_acres'] = combined['total_area_covered'] / 4046.8564224
 
-# Export to CSV (including new acre columns)
+# Export to CSV (including new columns)
 combined.to_csv('cbg_parcel_coverage_summary.csv', index=False)
 print('Written ➔ cbg_parcel_coverage_summary.csv') 
