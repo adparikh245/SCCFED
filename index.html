@@ -339,7 +339,7 @@
             
             if (colorScheme.type === 'coverage') {
                 let legend = `<h4>${colorScheme.description}</h4>`;
-                const ranges = ['0%', '>0% - <3%', '>3% - <6%', '>6% - <11%', '>11% - <20%', '>20%'];
+                const ranges = ['0%', '>0% - <2%', '>2% - <5%', '>5% - <10%', '>10% - <20%', '>20%'];
                 ranges.forEach((range, i) => {
                     legend += `<div class="legend-item">
                         <div class="legend-color" style="background-color: ${colorScheme.colors[i]}"></div>
