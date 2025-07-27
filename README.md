@@ -1,7 +1,11 @@
 # SCCFED: Smart and Connected Communities Food Environment Dynamics
 
 This repository contains spatial analysis and supporting data files for evaluating **commercially zoned parcels** in Los Angeles County (LAC) and Southern California Association of Governments (SCAG) data, with a focus on supermarket site feasibility.
- 
+
+> **About the Data Sources**  
+> - **SCAG** (Southern California Association of Governments) is the nation’s largest metropolitan planning organization, covering six counties in Southern California. It provides regionally harmonized zoning and land-use datasets used for infrastructure and development planning.  
+> - **LAC** (Los Angeles County) maintains its own high-resolution, parcel-level zoning and land use data. This dataset offers more detailed classifications specific to L.A. County’s jurisdiction.
+
 ---
 
 ## Project Goal
@@ -48,7 +52,7 @@ This identifies feasible locations for future supermarkets, in line with optimiz
 - **HTML**: for visual preview of map overlays
 
 ---
-## Citations:
+## Data Sets:
 - LAC (2019): https://data.lacounty.gov/documents/lacounty::parcels/about
 - SCAG (2019): https://hub.scag.ca.gov/datasets/3e9c888c6aae45ab8e140abeec42cd1e_0/about
 - CBG (2024): https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2024&layergroup=Block+Groups
