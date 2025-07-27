@@ -209,8 +209,37 @@
             // Determine color scheme based on file type
             const colorScheme = getColorScheme(fileName);
             
+            // Filter features based on file type
+            const filteredFeatures = geojson.features.map(feature => {
+                const filteredFeature = {
+                    type: feature.type,
+                    geometry: feature.geometry,
+                    properties: { ...feature.properties }
+                };
+                
+                // For SCAG files, remove LAC codes/labels
+                if (fileName.includes('scag_')) {
+                    delete filteredFeature.properties.lac_food_codes;
+                    delete filteredFeature.properties.lac_food_labels;
+                }
+                // For LAC files, remove SCAG codes/labels
+                else if (fileName.includes('lac_')) {
+                    delete filteredFeature.properties.scag_food_codes;
+                    delete filteredFeature.properties.scag_food_labels;
+                }
+                
+                return filteredFeature;
+            });
+            
+            const filteredGeoJSON = {
+                type: geojson.type,
+                name: geojson.name,
+                crs: geojson.crs,
+                features: filteredFeatures
+            };
+            
             // Add new layer
-            currentLayer = L.geoJSON(geojson, {
+            currentLayer = L.geoJSON(filteredGeoJSON, {
                 style: function(feature) {
                     return getFeatureStyle(feature, colorScheme);
                 },
@@ -239,8 +268,8 @@
                 map.setView([34.0522, -118.2437], 9);
             }
             
-            // Update file info
-            updateFileInfo(geojson, fileName);
+            // Update file info with filtered data
+            updateFileInfo(filteredGeoJSON, fileName);
             
             // Update legend
             updateLegend(colorScheme);
